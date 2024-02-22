@@ -6,10 +6,38 @@ function display(){
     document.getElementById("rezultat").value += value;
 }
 
-function calculate(){
-    let x = document.getElementById("rezultat").value;
-    let y = eval(x);
-    document.getElementById("rezultat").value = y;
+function calculate() {
+    let input = document.getElementById("rezultat").value;
+    let numbers = input.match(/\d+(\.\d+)?/g); // Extract numbers
+    let operators = input.match(/[+\-*/]/g);   // Extract operators
+    let result = parseFloat(numbers[0]);        // Initialize result with first number
+
+    // Iterate over operators and numbers to perform calculations
+    for (let i = 0; i < operators.length; i++) {
+        let nextNumber = parseFloat(numbers[i + 1]);
+        let operator = operators[i];
+
+        // Perform operation based on operator
+        switch (operator) {
+            case '+':
+                result += nextNumber;
+                break;
+            case '-':
+                result -= nextNumber;
+                break;
+            case '*':
+                result *= nextNumber;
+                break;
+            case '/':
+                result /= nextNumber;
+                break;
+            default:
+                break;
+        }
+    }
+
+    // Update the input field with the result
+    document.getElementById("rezultat").value = result;
 }
 
 button1.addEventListener('click', function() {
