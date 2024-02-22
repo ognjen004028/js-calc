@@ -8,16 +8,16 @@ function display(){
 
 function calculate() {
     let input = document.getElementById("rezultat").value;
-    let numbers = input.match(/\d+(\.\d+)?/g); // Extract numbers
-    let operators = input.match(/[+\-*/]/g);   // Extract operators
-    let result = parseFloat(numbers[0]);        // Initialize result with first number
+    let numbers = input.match(/\d+(\.\d+)?/g); 
+    let operators = input.match(/[+\-*/]/g);   
+    let result = parseFloat(numbers[0]);        
 
-    // Iterate over operators and numbers to perform calculations
+    
     for (let i = 0; i < operators.length; i++) {
         let nextNumber = parseFloat(numbers[i + 1]);
         let operator = operators[i];
 
-        // Perform operation based on operator
+        
         switch (operator) {
             case '+':
                 result += nextNumber;
@@ -36,7 +36,6 @@ function calculate() {
         }
     }
 
-    // Update the input field with the result
     document.getElementById("rezultat").value = result;
 }
 
