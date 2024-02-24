@@ -6,8 +6,7 @@ function display(){
     document.getElementById("rezultat").value += value;
 }
 
-function calculate() {
-  let input = document.getElementById("rezultat").value;
+function calculate(input) {
   let numbers = input.match(/\d+(\.\d+)?/g); 
   let operators = input.match(/[+\-*/]/g);   
   let result = parseFloat(numbers[0]);        
@@ -15,7 +14,7 @@ function calculate() {
   for (let i = 0; i < operators.length; i++) {
       let nextNumber = parseFloat(numbers[i + 1]);
       let operator = operators[i];
-  
+
       switch (operator) {
           case '+':
               result += nextNumber;
@@ -33,8 +32,7 @@ function calculate() {
               break;
       }
   }
-
-  document.getElementById("rezultat").value = result;
+  return result;
 }
 
 button1.addEventListener('click', function() {
@@ -98,7 +96,8 @@ buttonTacka.addEventListener('click', function() {
   });
 
 buttonJednako.addEventListener('click', function() {
-    calculate();
+  let input = document.getElementById("rezultat").value;
+  document.getElementById("rezultat").value = calculate(input);
   });
   
 buttonC.addEventListener('click', function() {
