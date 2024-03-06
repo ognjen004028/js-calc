@@ -1,2 +1,2 @@
 # js-calc
-Moj prvi Javascript kalkulator
+My first Javascript calculator
